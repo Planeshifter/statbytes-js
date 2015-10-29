@@ -5,7 +5,7 @@ StatBytes presentation on JavaScript
 
 In this talk, I will give a practical introduction to using JavaScript for visualization tasks and scientific computing. JavaScript, once maligned as a simple tool to create animations for websites, today powers complex, data-intensive web applications both server- and client-side via [Node.js](http://www.nodejs.org).
 
-I will start by outlining a modern workflow based on [browserify](http://browserify.org/), which modularizes development and gives oneself access to >150,000 NPM modules to be used in the Browser. NPM (http://www.npmjs.com/), the official Node.js package manager, has eclipsed all other language package managers both in terms of sheer size, as well as rate of growth. JavaScript packages exist for incredibly diverse applications such as robotics, cryptography, infrastructure management, and natural language processing.
+I will start by outlining a modern workflow based on [browserify](http://browserify.org/), which modularizes development and gives oneself access to >150,000 NPM modules to be used in the Browser. [NPM](http://www.npmjs.com/), the official Node.js package manager, has eclipsed all other language package managers both in terms of sheer size, as well as rate of growth. JavaScript packages exist for incredibly diverse applications such as robotics, cryptography, infrastructure management, and natural language processing.
 
 Next, I will give an introduction to data visualization with Mike Bostock's D3.js library (D3 standing for "Data-Driven Documents"). Main concepts of the library such as selections and data binding will be discussed. As an example, we will discuss the creation of an interactive histogram, which can be manipulated by user input.
 
