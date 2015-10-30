@@ -1,0 +1,25 @@
+{
+  "name": "@planeshifter/polymer-codebox",
+  "version": "0.0.0",
+  "description": "A Polymer web component for evaluating JavaScript code.",
+  "main": "index.js",
+  "directories": {
+    "example": "examples"
+  },
+  "keywords": [
+    "polymer",
+    "web-components",
+    "web",
+    "component",
+    "eval",
+    "codeblock",
+    "code"
+  ],
+  "author": {
+    "name": "Philipp Burckhardt",
+    "email": "pburckhardt@outlook.com"
+  },
+  "license": "MIT",
+  "dependencies": {
+  }
+}

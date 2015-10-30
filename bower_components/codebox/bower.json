@@ -1,0 +1,33 @@
+{
+  "name": "polymer-codebox",
+  "authors": [
+    {
+      "name": "Philipp Burckhardt",
+      "email": "pburckhardt@outlook.com"
+    }
+  ],
+  "description": "A Polymer web component for evaluating JavaScript code.",
+  "main": "polymer-codebox.html",
+  "moduleType": [],
+  "keywords": [
+    "polymer",
+    "web-components",
+    "web",
+    "component",
+    "eval",
+    "codeblock",
+    "code"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "../",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "~1.2.1"
+  }
+}
