@@ -1,0 +1,14 @@
+.left {
+    text-align: left;
+}
+
+.left_column {
+    width: 58%;
+    float: left;
+    margin-right: 2%;
+}
+
+.right_column {
+    width: 40%;
+    float: left;
+}
