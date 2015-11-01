@@ -9,9 +9,11 @@ I will start by outlining a modern workflow based on [browserify](http://browser
 
 Next, I will give an introduction to data visualization with Mike Bostock's [D3.js](http://d3js.org/) library (D3 standing for "Data-Driven Documents"). Main concepts of the library such as selections and data binding will be discussed. As an example, we will discuss the creation of an interactive histogram, which can be manipulated by user input.
 
-Finally, I will demonstrate usage of novel open-source JavaScript library [compute-io](https://github.com/compute-io) for statistical computations and how to integrate it into the previously laid out workflow. The goal of compute-io, a project by Athan Reines, is to build a numerical computing environment for JavaScript comparable to the features of languages such as Matlab, R or Python. I have become a major contributor of this effort, and amongst others implemented a comprehensive library for working with statistical distributions. We will discuss the API of these tools and how they can be used to power statistics on the Web. 
+Finally, I will demonstrate usage of novel open-source JavaScript library [compute-io](https://github.com/compute-io) for statistical computations and how to integrate it into the previously laid out workflow. The goal of compute-io, a project by Athan Reines, is to build a numerical computing environment for JavaScript comparable to the features of languages such as Matlab, R or Python. I have become a major contributor of this effort, and amongst others implemented a comprehensive library for working with statistical distributions. We will discuss the API of these tools and how they can be used to power statistics on the Web.
 
 ## Prerequisites
 
-## Slides
+If you wish to execute the code examples on your own computer, you should have the following installed:
 
+- JavaScript runtime [Node.js](https://nodejs.org/en/), which comes with package manager [NPM](https://www.npmjs.com)
+- During the presentation, we will create a little data visualization with d3. Unzip [sandbox.zip](https://github.com/Planeshifter/statbytes-js/raw/master/sandbox.zip) into a folder and you are ready to follow along. 
