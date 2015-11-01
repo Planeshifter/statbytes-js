@@ -13,7 +13,5 @@ Finally, I will demonstrate usage of novel open-source JavaScript library [compu
 
 ## Prerequisites
 
-If you wish to execute the code examples on your own computer, you should have the following installed:
-
-- JavaScript runtime [Node.js](https://nodejs.org/en/), which comes with package manager [NPM](https://www.npmjs.com)
+- If you wish to execute the code examples on your own computer, you should have the following installed: JavaScript runtime [Node.js](https://nodejs.org/en/), which comes with package manager [NPM](https://www.npmjs.com)
 - During the presentation, we will create a little data visualization with d3. Unzip [sandbox.zip](https://github.com/Planeshifter/statbytes-js/raw/master/sandbox.zip) into a folder and you are ready to follow along. 
