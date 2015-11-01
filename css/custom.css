@@ -12,3 +12,7 @@
     width: 40%;
     float: left;
 }
+
+code {
+	line-height: 1.4em !important;
+}
