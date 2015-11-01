@@ -8,8 +8,7 @@
 			#code {
 				width: 500px;
 				height: 200px;
-				font-size: 22px;
-				font-family: monospace, sans-serif;
+				font: 22px "Monaco","Menlo","Ubuntu Mono","Consolas","source-code-pro", monospace !important;
 			}
 			#output {
 				background-color: white;
@@ -27,7 +26,7 @@
 			<div id="code">
 				{{code:input}}
 			</div>
-			<span>Output</span>
+			<span>Output:</span>
 			<div id="output">
 			</div>
 		</div>
@@ -54,24 +53,13 @@
 			}
 		},
 		_refresh: function() {
-			var txt,
-				code,
+			var code,
 				evalFun,
 				elem;
-			txt = this.editor.getValue();
-			// Add return statement to last line:
-			if( txt.lastIndexOf( '\n' ) > 0 ) {
-				txt = txt.replace( /\n[\s\n]*/, '\n' );
-				code = txt.substring( 0, txt.lastIndexOf( '\n' ) );
-				code += 'return ' + txt.substring( txt.lastIndexOf( '\n' ) + 1, txt.length );
-				console.log( code )
-			} else {
-				code = 'return ' + txt;
-			}
+			code = this.editor.getValue();
 			try {
-				evalFun = new Function( code );
 				elem = this.$.output;
-				elem.innerHTML = JSON.stringify( evalFun(), function replacer( key, val ) {
+				elem.innerHTML = JSON.stringify( eval( code ), function replacer( key, val ) {
 					return val.toFixed ? Number( val.toFixed(4) ) : val;
 				}, 1 );
 			} catch ( err ) {

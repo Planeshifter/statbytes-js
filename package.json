@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "description": "StatBytes presentation on JavaScript",
   "scripts": {
+    "start": "node_modules/.bin/http-server -p 8000",
     "deploy": "git push origin `git subtree split --prefix slides master`:gh-pages --force"
   },
   "repository": {
@@ -17,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/Planeshifter/statbytes-js/issues"
   },
-  "homepage": "https://github.com/Planeshifter/statbytes-js#readme"
+  "homepage": "https://github.com/Planeshifter/statbytes-js#readme",
+  "dev-dependencies": {
+    "http-server": "^0.8.5"
+  }
 }
