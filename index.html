@@ -12,11 +12,16 @@
 		<link rel="stylesheet" href="css/custom.css">
 		<!-- Code syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
+		<!-- Load c3.css -->
+		<link href="plugin/c3/c3.css" rel="stylesheet" type="text/css">
 
 		<!-- 1. Load platform support before any code that touches the DOM. -->
 		<script src="bower_components/webcomponentsjs/webcomponents.min.js"></script>
 		<!-- 2. Load Compute-IO bundle -->
 		<script src="bundle.js"></script>
+		<!-- Load d3.js and c3.js -->
+		<script src="node_modules/d3/d3.min.js" charset="utf-8"></script>
+		<script src="plugin/c3/c3.min.js"></script>
 		<!-- 3. Load web components using an HTML Import -->
 		<link rel="import" href="bower_components/codebox/polymer-codebox.html">
 
@@ -75,7 +80,7 @@
 				<section>
 					<img src="img/compute.png" style="float:left;"/>
 					<img src="img/athan.jpeg" style="float:right;"/>
-					<h2>Compute-IO</h2>
+					<h1>Compute-IO</h1>
 					<ul>
 						<li>Project started by Athan Reines, data scientist at Verbify Inc.</li>
 						<li>Goal: Open-Source numerical computing library comparable to Matlab, R and Python</li>
@@ -203,8 +208,21 @@ svg.append( 'g' )
 d3.select( '#dataSelect' ).on( 'change', updateData );</code></pre>
 				</section>
 				<section>
-					<h2>Distributions-IO</h2>
-					<img src="img/distributions.svg" alt=""/>
+					<img src="img/distributions.svg" alt="" style="float:left;"/>
+					<h1>Distributions-IO</h1>
+					<ul>
+						<li>Comprehensive package for working with statistical distributions</li>
+						<li>Facilities to evaluate CDFs, PDFs &amp; quantile functions</li>
+						<li>Distribution properties</li>
+						<li>Random number generators</li>
+					</ul>
+				</section>
+				<section class="left">
+					<h2>PDFs, CDFs &amp; quantile functions</h2>
+					<div class="right_column">
+						<polymer-codebox id="distFun" code="pdfNorm(2);"></polymer-codebox>
+					</div>
+					<div id="chart" style="background: white; width: 45%; float: right;"></div>
 				</section>
 				<section class="left">
 					<h3> Sampling from a Distribution </h3>
@@ -262,6 +280,62 @@ d3.select( '#dataSelect' ).on( 'change', updateData );</code></pre>
 					{ src: 'plugin/notes/notes.js', async: true }
 				]
 			});
+
+			document.getElementById( 'distFun' ).addEventListener( 'change', updatePlot )
+
+			function updatePlot() {
+				var inputArr,
+					outputArr,
+					code,
+					el,
+					funName,
+					firstArg,
+					input, output;
+				el = document.querySelector( '#distFun' );
+				code = el.code;
+				funName = /([a-zA-Z]+)\(/.exec( code )[ 1 ];
+				function replaceFun(){
+					firstArg = arguments[ 0 ];
+					return window[funName].apply( this, arguments );
+				}
+				code = code.replace( /[a-zA-Z]+\(/, 'replaceFun(' );
+				output = eval( code );
+				input = firstArg;
+				if ( !Array.isArray( input ) ) {
+					inputArr = [input];
+				} else {
+					inputArr = input;
+				}
+				if ( !Array.isArray( output ) ) {
+					outputArr = [output];
+				} else {
+					outputArr = output;
+				}
+				var chart = c3.generate({
+					bindto: '#chart',
+						data: {
+							x: 'x',
+							columns: [
+								['x'].concat( inputArr ),
+								['pdf'].concat( outputArr )
+							]
+						},
+						point: {
+							show: false
+						},
+						axis: {
+							x: {
+								tick: {
+									fit: false
+								}
+							}
+						},
+						legend: {
+							show: false
+						}
+				});
+			}
+
 
 		</script>
 
