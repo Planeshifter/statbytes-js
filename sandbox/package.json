@@ -1,0 +1,17 @@
+{
+  "name": "sandbox",
+  "version": "0.0.0",
+  "scripts": {
+    "browserify": "node_modules/.bin/browserify script.js > bundle.js",
+    "start": "node_modules/.bin/beefy script.js:bundle.js 8000 --live"
+  },
+  "devDependencies": {
+    "beefy": "^2.1.5",
+    "browserify": "^12.0.1"
+  },
+  "dependencies": {
+    "compute.io": "^0.106.0",
+    "d3": "^3.5.6",
+    "datasets-iris-setosa-sepal": "^1.0.0"
+  }
+}
