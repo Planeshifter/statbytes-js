@@ -22,10 +22,15 @@
     "node": "~0.10.0"
   },
   "dependencies": {
-    "underscore": "~1.5.1",
+    "compute-incrspace": "^1.0.2",
+    "compute-indexspace": "^1.0.1",
+    "compute-linspace": "^1.0.0",
+    "compute-logspace": "^1.0.0",
+    "d3": "^3.5.6",
     "express": "~2.5.9",
     "mustache": "~0.7.2",
-    "socket.io": "~0.9.16"
+    "socket.io": "~0.9.16",
+    "underscore": "~1.5.1"
   },
   "devDependencies": {
     "grunt-contrib-qunit": "~0.5.2",
