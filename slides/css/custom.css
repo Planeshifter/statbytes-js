@@ -1,18 +1,22 @@
 .left {
-    text-align: left;
+	text-align: left;
 }
 
 .left_column {
-    width: 58%;
-    float: left;
-    margin-right: 2%;
+	width: 58%;
+	float: left;
+	margin-right: 2%;
 }
 
 .right_column {
-    width: 40%;
-    float: left;
+	width: 40%;
+	float: left;
 }
 
 code {
 	line-height: 1.4em !important;
+}
+
+#chart {
+	padding: 5px;
 }
