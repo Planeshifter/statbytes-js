@@ -65,10 +65,10 @@
 				<section>
 					<h2> Why JavaScript? </h2>
 					<ol>
-						<li>Flexible, functional, web-based</li>
-						<li>It's faster than Python and R</li>
-						<li>Rich eco-system</li>
-						<li>Graphics support</li>
+						<li class="fragment">Flexible, functional, web-based</li>
+						<li class="fragment">It's faster than Python and R</li>
+						<li class="fragment">Rich eco-system</li>
+						<li class="fragment">Graphics support</li>
 					</ol>
 				</section>
 				<section>
@@ -106,7 +106,8 @@
 				</section>
 				<section>
 					<img src="img/d3.png"></img>
-					<p>Goal: Create a histogram with d3 for Edgar Anderson's famous <i>Iris</i> data set.</p>
+					<p>JavaScript library by Mike Bostock to visualize data with HTML, SVG, and CSS.</p>
+					<p class="fragment">Goal: Create a histogram with d3 for Edgar Anderson's famous <i>Iris</i> data set.</p>
 				</section>
 				<section>
 					<h2>package.json file</h2>
@@ -217,10 +218,10 @@ d3.select( '#dataSelect' ).on( 'change', updateData );</code></pre>
 						<li>Random number generators</li>
 					</ul>
 				</section>
-				<section class="left">
+				<section class="left" data-state="funPlot">
 					<h2>PDFs, CDFs &amp; quantile functions</h2>
 					<div class="right_column">
-						<polymer-codebox id="distFun" code="pdfNorm(2);"></polymer-codebox>
+						<polymer-codebox id="distFun" code="pdfNorm([-1,0,1]);"></polymer-codebox>
 					</div>
 					<div id="chart" style="background: white; width: 45%; float: right;"></div>
 				</section>
@@ -325,8 +326,14 @@ d3.select( '#dataSelect' ).on( 'change', updateData );</code></pre>
 						},
 						axis: {
 							x: {
+								fit: true,
 								tick: {
-									fit: false
+									culling: {
+										max: 4
+									},
+									format: function (x) {
+										return x.toFixed(2);
+									}
 								}
 							}
 						},
@@ -335,6 +342,13 @@ d3.select( '#dataSelect' ).on( 'change', updateData );</code></pre>
 						}
 				});
 			}
+
+
+			// Initialize plot when slide becomes active
+
+			Reveal.addEventListener( 'funPlot', function onSlide() {
+				updatePlot();
+			}, false );
 
 
 		</script>
