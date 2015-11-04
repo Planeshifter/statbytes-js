@@ -223,7 +223,7 @@ d3.select( '#dataSelect' ).on( 'change', updateData );</code></pre>
 					<div class="right_column">
 						<polymer-codebox id="distFun" code="pdfNorm([-1,0,1]);"></polymer-codebox>
 					</div>
-					<div id="chart" style="background: white; width: 45%; float: right;"></div>
+					<div id="chart" style="background: white; width: 45%; float: right; "></div>
 				</section>
 				<section class="left">
 					<h3> Sampling from a Distribution </h3>
@@ -250,6 +250,12 @@ d3.select( '#dataSelect' ).on( 'change', updateData );</code></pre>
 								<li>"Data Visualization with D3.js Cookbook" by Nick Qi Zhu</li>
 							</ul>
 						<li>Compute-IO:</li>
+							<ul>
+								<li><a href="http://compute-io.com">compute-io</a></li>
+								<li><a href="https://github.com/distributions-io">distributions-io</a></li>
+								<li><a href="https://github.com/dstructs">dstructs</a></li>
+								<li><a href="http://figure-io.com">figure-io</a></li>
+							</ul>
 					</ul>
 				</section>
 			</div>
@@ -314,35 +320,40 @@ d3.select( '#dataSelect' ).on( 'change', updateData );</code></pre>
 				}
 				var chart = c3.generate({
 					bindto: '#chart',
-						data: {
-							x: 'x',
-							columns: [
-								['x'].concat( inputArr ),
-								['pdf'].concat( outputArr )
-							]
-						},
-						point: {
-							show: false
-						},
-						axis: {
-							x: {
-								fit: true,
-								tick: {
-									culling: {
-										max: 4
-									},
-									format: function (x) {
-										return x.toFixed(2);
-									}
+					padding: {
+						top: 20,
+						right: 40,
+						bottom: 20,
+						left: 40,
+					},
+					data: {
+						x: 'x',
+						columns: [
+							['x'].concat( inputArr ),
+							['pdf'].concat( outputArr )
+						]
+					},
+					point: {
+						show: false
+					},
+					axis: {
+						x: {
+							fit: true,
+							tick: {
+								culling: {
+									max: 4
+								},
+								format: function (x) {
+									return x.toFixed(2);
 								}
 							}
-						},
-						legend: {
-							show: false
 						}
+					},
+					legend: {
+						show: false
+					}
 				});
 			}
-
 
 			// Initialize plot when slide becomes active
 
