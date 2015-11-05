@@ -7,7 +7,7 @@
 		<title>Statistics in JavaScript</title>
 
 		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/moon.css" id="theme">
+		<link rel="stylesheet" href="css/theme/white.css" id="theme">
 		<!-- My styles -->
 		<link rel="stylesheet" href="css/custom.css">
 		<!-- Code syntax highlighting -->
@@ -67,7 +67,7 @@
 					<ol>
 						<li class="fragment">Flexible, functional, web-based</li>
 						<li class="fragment">It's faster than Python and R</li>
-						<li class="fragment">Rich eco-system</li>
+						<li class="fragment">Rich ecosystem</li>
 						<li class="fragment">Graphics support</li>
 					</ol>
 				</section>
@@ -75,12 +75,12 @@
 					<h2><a href="http://www.nodejs.org" target="_blank">Node.js</a> and <a href="http://www.npmjs.com" target="_blank">NPM</a package manager</h2>
 				</section>
 				<section data-background="#dddddd">
-					<h2 style="color:#002b36;">Statistical Computing</h2>
+					<h2><a href="http://datta.io/" target="_blank" style="color:#002b36;">Data Analysis with JavaScript</a></h2>
 				</section>
 				<section>
 					<img src="img/compute.png" style="float:left;"/>
 					<img src="img/athan.jpeg" style="float:right;"/>
-					<h1>Compute-IO</h1>
+					<h1 style="font-size: 2em;">Compute</h1>
 					<ul>
 						<li>Project started by Athan Reines, data scientist at Verbify Inc.</li>
 						<li>Goal: Open-Source numerical computing library comparable to Matlab, R and Python</li>
@@ -88,13 +88,13 @@
 					</ul>
 				</section>
 				<section class="left">
-					<h3> Compute-IO Overview </h3>
+					<h3> Compute Overview </h3>
 					<div class="left_column">
 						<ul>
-							<li>Scope: Utility functions, mathematics, statistics.</li>
-							<li>Matrix data type</li>
-							<li>Polymorphic interfaces</li>
-							<li>Fully documented + tested, see for example <a href="https://github.com/compute-io/mean" target="_blank">mean</a></li>
+							<li class="fragment">Scope: Utility functions, mathematics, statistics.</li>
+							<li class="fragment">Polymorphic interfaces</li>
+							<li class="fragment">Matrix data type</li>
+							<li class="fragment">Fully documented + tested, see for example <a href="https://github.com/compute-io/mean" target="_blank">mean</a></li>
 						</ul>
 					</div>
 					<div class="right_column">
@@ -107,7 +107,17 @@
 				<section>
 					<img src="img/d3.png"></img>
 					<p>JavaScript library by Mike Bostock to visualize data with HTML, SVG, and CSS.</p>
-					<p class="fragment">Goal: Create a histogram with d3 for Edgar Anderson's famous <i>Iris</i> data set.</p>
+				</section>
+				<section>
+					<h2>Some Example Visualizations</h2>
+					<ul>
+						<li><a href="http://setosa.io/ev/markov-chains/">Markov Chains</a></li>
+						<li><a href="http://bl.ocks.org/jinroh/7524988">Fourier Series</a></li>
+						<li><a href="http://bl.ocks.org/mbostock">Mike Bostock's blocks</a></li>
+					</ul>
+				</section>
+				<section>
+					<h3>Goal: Create a histogram with d3 for Edgar Anderson's famous <i>Iris</i> data set.</h3>
 				</section>
 				<section>
 					<h2>package.json file</h2>
@@ -132,11 +142,22 @@
 				</section>
 				<section>
 					<h3 style="text-align: left;">We load node modules in browser-side code.</h3>
-<pre><code class="hljs javascript" style="font-size:1.2em;">var compute = require( 'compute.io' ),
-  sepal = require( 'datasets-iris-setosa-sepal' ),
-  d3 = require( 'd3' );</code></pre>
+<pre><code class="hljs javascript" style="font-size:1.2em;">var compute = require( 'compute.io' );
+var sepal = require( 'datasets-iris-setosa-sepal' );
+var d3 = require( 'd3' );</code></pre>
 				</section>
-				<section>
+				<section data-transition="fade">
+					<h3 style="text-align: left;"> We create a <a href="https://developer.mozilla.org/en-US/docs/Web/SVG">SVG</a> object: </h3>
+<pre><code style="font-size:1.2em;">
+
+
+
+var svg = d3.select( '#histogram' ).append( 'svg' )
+
+
+</code></pre>
+				</section>
+				<section data-transition="fade">
 					<h3 style="text-align: left;"> We create a <a href="https://developer.mozilla.org/en-US/docs/Web/SVG">SVG</a> object: </h3>
 <pre><code style="font-size:1.2em;">var margin = {top: 10, right: 30, bottom: 30, left: 30},
   width = 960 - margin.left - margin.right,
@@ -159,24 +180,39 @@ var y = d3.scale.linear()
 				</section>
 				<section>
 					<h2>General update pattern</h2>
-<pre><code class="hljs javascript" style="font-size: 1em; float:left; width:58%">function draw( dat ) {
-  var data = d3.layout.histogram()
-    .bins(x.ticks(20))
-    .frequency( false )( dat );
-  var bars = svg.selectAll( 'rect' )
+<pre><code class="hljs javascript" style="font-size: 1em; float:left; width:53%">var bars = svg.selectAll( 'rect' )
     .data( data );
   // Enter Selection
   bars.enter()
-    .append( "rect" )
+    .append( 'rect' )
+  // Update Selection
+    // set attributes of bars...
+
+  // Exit Selection
+  bars.exit().remove();
+</code></pre>
+<img src="img/join.png" style="width:45%; float:right;"></img>
+				</section>
+				<section>
+					<h2>General update pattern</h2>
+<pre><code class="hljs javascript" style="font-size: 1em; float:left; width:58%">function draw( dat ) {
+  var data = d3.layout.histogram()
+	.bins(x.ticks(20))
+	.frequency( false )( dat );
+  var bars = svg.selectAll( 'rect' )
+	.data( data );
+  // Enter Selection
+  bars.enter()
+	.append( "rect" )
   // Update Selection
   bars.attr( "width", x(data[0].dx) - 1)
-    .attr( "height", function(d) {
-      return height - y(d.y);
-    })
-    .attr( "transform", function(d) {
-      return "translate(" +
-      x(d.x) + "," + y(d.y) + ")";
-    });
+	.attr( "height", function(d) {
+	  return height - y(d.y);
+	})
+	.attr( "transform", function(d) {
+	  return "translate(" +
+	  x(d.x) + "," + y(d.y) + ")";
+	});
   // Exit Selection
   bars.exit().remove();
 }</code></pre>
@@ -196,7 +232,7 @@ svg.append( 'g' )
 				<section>
 					<h3 style="text-align: left;"> We let the user select which data to display. </h3>
 <pre><code class ="hljs javascript">function updateData() {
-  var option = d3.select( '#dataSelect' ).property( "value" );
+  var option = d3.select( '#dataSelect' ).property( 'value' );
   switch ( option ) {
     case 'sepalWidth':
       draw( sepal.width );
@@ -210,7 +246,7 @@ d3.select( '#dataSelect' ).on( 'change', updateData );</code></pre>
 				</section>
 				<section>
 					<img src="img/distributions.svg" alt="" style="float:left;"/>
-					<h1>Distributions-IO</h1>
+					<h1>Distributions</h1>
 					<ul>
 						<li>Comprehensive package for working with statistical distributions</li>
 						<li>Facilities to evaluate CDFs, PDFs &amp; quantile functions</li>
@@ -221,7 +257,7 @@ d3.select( '#dataSelect' ).on( 'change', updateData );</code></pre>
 				<section class="left" data-state="funPlot">
 					<h2>PDFs, CDFs &amp; quantile functions</h2>
 					<div class="right_column">
-						<polymer-codebox id="distFun" code="pdfNorm([-1,0,1]);"></polymer-codebox>
+						<polymer-codebox id="distFun" code="norm.pdf([-1,0,1]);"></polymer-codebox>
 					</div>
 					<div id="chart" style="background: white; width: 45%; float: right; "></div>
 				</section>
@@ -236,7 +272,7 @@ d3.select( '#dataSelect' ).on( 'change', updateData );</code></pre>
 						</ul>
 					</div>
 					<div class="right_column">
-						<polymer-codebox code="rNorm(3);"></polymer-codebox>
+						<polymer-codebox code="norm.random(3);"></polymer-codebox>
 					</div>
 				</section>
 				<section>
@@ -249,12 +285,12 @@ d3.select( '#dataSelect' ).on( 'change', updateData );</code></pre>
 								<li><a href="http://alignedleft.com/tutorials/d3/">Scott Murray's D3 Tutorials</a></li>
 								<li>"Data Visualization with D3.js Cookbook" by Nick Qi Zhu</li>
 							</ul>
-						<li>Compute-IO:</li>
+						<li>Datta-IO:</li>
 							<ul>
-								<li><a href="http://compute-io.com">compute-io</a></li>
-								<li><a href="https://github.com/distributions-io">distributions-io</a></li>
+								<li><a href="http://compute-io.com">compute</a></li>
+								<li><a href="https://github.com/distributions-io">distributions</a></li>
 								<li><a href="https://github.com/dstructs">dstructs</a></li>
-								<li><a href="http://figure-io.com">figure-io</a></li>
+								<li><a href="http://figure-io.com">figure</a></li>
 							</ul>
 					</ul>
 				</section>
@@ -300,12 +336,13 @@ d3.select( '#dataSelect' ).on( 'change', updateData );</code></pre>
 					input, output;
 				el = document.querySelector( '#distFun' );
 				code = el.code;
-				funName = /([a-zA-Z]+)\(/.exec( code )[ 1 ];
+				funName = /([.a-zA-Z]+)\(/.exec( code )[ 1 ].split('.');
 				function replaceFun(){
 					firstArg = arguments[ 0 ];
-					return window[funName].apply( this, arguments );
+									console.log( window[funName[0]])
+					return window[funName[0]][funName[1]].apply( this, arguments );
 				}
-				code = code.replace( /[a-zA-Z]+\(/, 'replaceFun(' );
+				code = code.replace( /[.a-zA-Z]+\(/, 'replaceFun(' );
 				output = eval( code );
 				input = firstArg;
 				if ( !Array.isArray( input ) ) {
@@ -361,7 +398,21 @@ d3.select( '#dataSelect' ).on( 'change', updateData );</code></pre>
 				updatePlot();
 			}, false );
 
+			/**
+			* FUNCTION: createGlobals()
+			*	Binds all object properties to the global `window` object.
+			*/
+			function createGlobals( obj ) {
+				var keys,
+					i;
+				keys = Object.keys( obj );
+				for ( i = 0; i < keys.length; i++ ) {
+					window[ keys[i] ] = obj[ keys[i] ];
+				}
+			} // end FUNCTION createGlobals()
 
+			createGlobals( compute );
+			createGlobals( distributions );
 		</script>
 
 	</body>
