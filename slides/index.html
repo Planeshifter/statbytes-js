@@ -19,6 +19,7 @@
 		<script src="bower_components/webcomponentsjs/webcomponents.min.js"></script>
 		<!-- 2. Load Compute-IO bundle -->
 		<script src="bundle.js"></script>
+		<script src="attach.js"></script>
 		<!-- Load d3.js and c3.js -->
 		<script src="plugin/d3/d3.min.js" charset="utf-8"></script>
 		<script src="plugin/c3/c3.min.js"></script>
@@ -305,9 +306,6 @@ d3.select( '#dataSelect' ).on( 'change', updateData );</code></pre>
 
 		<script>
 
-			createGlobals( compute );
-			createGlobals( distributions );
-
 			// Full list of configuration options available at:
 			// https://github.com/hakimel/reveal.js#configuration
 			Reveal.initialize({
@@ -403,18 +401,6 @@ d3.select( '#dataSelect' ).on( 'change', updateData );</code></pre>
 				updatePlot();
 			}, false );
 
-			/**
-			* FUNCTION: createGlobals()
-			*	Binds all object properties to the global `window` object.
-			*/
-			function createGlobals( obj ) {
-				var keys,
-					i;
-				keys = Object.keys( obj );
-				for ( i = 0; i < keys.length; i++ ) {
-					window[ keys[i] ] = obj[ keys[i] ];
-				}
-			} // end FUNCTION createGlobals()
 		</script>
 
 	</body>

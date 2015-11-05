@@ -36596,7 +36596,23 @@ arguments[4][45][0].apply(exports,arguments)
 (function (global){
 global.distributions = require( 'distributions.io' );
 global.compute = require( 'compute.io' );
-global.matrix = require( 'dstructs-matrix' ); 
+global.matrix = require( 'dstructs-matrix' );
+
+createGlobals( compute );
+createGlobals( distributions );
+
+/**
+* FUNCTION: createGlobals()
+*	Binds all object properties to the global `window` object.
+*/
+function createGlobals( obj ) {
+	var keys,
+		i;
+	keys = Object.keys( obj );
+	for ( i = 0; i < keys.length; i++ ) {
+		window[ keys[i] ] = obj[ keys[i] ];
+	}
+} // end FUNCTION createGlobals()
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"compute.io":53,"distributions.io":1193,"dstructs-matrix":9}],3439:[function(require,module,exports){
