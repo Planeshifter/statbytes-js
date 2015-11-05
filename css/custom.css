@@ -20,3 +20,7 @@ code {
 #chart {
 	padding: 5px;
 }
+
+img {
+	border:0 !important;
+}
