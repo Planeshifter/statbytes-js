@@ -200,22 +200,22 @@ var y = d3.scale.linear()
 					<h2>General update pattern</h2>
 <pre><code class="hljs javascript" style="font-size: 1em; float:left; width:58%">function draw( dat ) {
   var data = d3.layout.histogram()
-	.bins(x.ticks(20))
-	.frequency( false )( dat );
+    .bins(x.ticks(20))
+    .frequency( false )( dat );
   var bars = svg.selectAll( 'rect' )
-	.data( data );
+    .data( data );
   // Enter Selection
   bars.enter()
-	.append( "rect" )
+    .append( "rect" )
   // Update Selection
   bars.attr( "width", x(data[0].dx) - 1)
-	.attr( "height", function(d) {
-	  return height - y(d.y);
-	})
-	.attr( "transform", function(d) {
-	  return "translate(" +
-	  x(d.x) + "," + y(d.y) + ")";
-	});
+    .attr( "height", function(d) {
+      return height - y(d.y);
+    })
+    .attr( "transform", function(d) {
+      return "translate(" +
+      x(d.x) + "," + y(d.y) + ")";
+    });
   // Exit Selection
   bars.exit().remove();
 }</code></pre>
